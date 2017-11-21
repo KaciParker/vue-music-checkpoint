@@ -12,6 +12,7 @@ var store = new vuex.Store({
   mutations: {
     setResults(state, results){
       state.results = results
+      console.log(results)
     }
   },
   actions: {
@@ -19,8 +20,8 @@ var store = new vuex.Store({
       var url = '//bcw-getter.herokuapp.com/?url=';
       var url2 = 'https://itunes.apple.com/search?term=' + artist;
       var apiUrl = url + encodeURIComponent(url2);
-      $.get(apiUrl).then(data=>{
-        commit('setResults', data)
+      $.getJSON(apiUrl).then(data=>{
+        commit('setResults', data.results)
       })
     },
     getMyTunes({commit, dispatch}){
@@ -41,5 +42,6 @@ var store = new vuex.Store({
 
   }
 })
+
 
 export default store
