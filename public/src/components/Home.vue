@@ -33,15 +33,13 @@
 
 
 <style>
-  /* .my-tunes {
-    display: inline-block;
-    min-height: 500px;
-    min-width: 50%;
+  .home {
+    /* background: url(https://webdesignerdepot.s3.amazonaws.com/default-images/14.jpg) no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  font-family: 'Patua One', cursive;
   }
-
-  .itunes {
-    display: inline-block;
-    min-height: 500px;
-    min-width: 45%;
-  } */
 </style>

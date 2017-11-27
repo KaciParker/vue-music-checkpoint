@@ -2,23 +2,22 @@
     <div class="iTunes">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1">
-                <img src="https://www.builtlean.com/wp-content/uploads/2012/08/best-workout-playlist.jpg" alt="">
-                <h1>Search iTunes</h1>
+                <h1 class="title-font">Search iTunes</h1>
                 <form @submit.prevent="searchByArtist">
-                    <input type="text" placeholder="Artist Name" v-model="artist">
+                    <input style="color: black" type="text" placeholder="Artist Name" v-model="artist">
                     <button class="submit-btn" type="submit">Submit</button>
                 </form>
-                <div class="col-sm-12 songs" v-for="song in songs">
-                    <h4>Title: {{song.trackName}}</h4>
-                    <h4>Artist: {{song.artistName}}</h4>
-                    <div class="col-sm-4 col-sm-offset-8">
-                        <img :src="song.artworkUrl100" alt="">
-                    </div>
-                    <audio controls>
-                        <source :src="song.previewUrl">
-                    </audio>
-                    <button @click="addToPlaylist(song)" class="add-btn" type="btn">Add to My Playlist</button>
-                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-11 col-sm-offset-1 songs well" v-for="song in songs">
+                <button @click="addToPlaylist(song)" class="add-btn pull-right" type="btn">Add to My Playlist</button>
+                <h4>Title: {{song.trackName}}</h4>
+                <h4>Artist: {{song.artistName}}</h4>
+                <img :src="song.artworkUrl100">
+                <audio controls style="margin-left: 3rem">
+                    <source :src="song.previewUrl">
+                </audio>
             </div>
         </div>
     </div>
@@ -52,17 +51,29 @@
 </script>
 
 <style>
+    .title-font {
+        font-family: 'Permanent Marker', cursive;
+    }
+
     .songs {
-        padding-top: 1px;
-        padding-bottom: 1px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         outline: solid black 1px;
         width: 500px;
+        background-color: black;
     }
+
     .submit-btn {
         margin-top: 2rem;
         margin-bottom: 2rem;
+        color: black;
     }
+
     .add-btn {
+        margin-top: 1rem;
         margin-bottom: 1rem;
+        color: black;
     }
 </style>

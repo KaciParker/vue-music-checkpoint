@@ -12,13 +12,9 @@ var store = new vuex.Store({
   mutations: {
     setResults(state, results) {
       state.results = results
-      // console.log(results)
     },
-    // addSong(state, data) {
-    //   state.myTunes.push(data)
-    //   console.log(myTunes)
-    // },
     getPlaylist(state, data) {
+      console.log(data)
       state.myTunes = data
     }
   },
@@ -35,7 +31,6 @@ var store = new vuex.Store({
       //this should send a get request to your server to return the list of saved tunes
       var url = '//localhost:3000/songs'
       $.get(url).then(data => {
-        console.log(data)
         commit('getPlaylist', data)
       })
     },
@@ -63,15 +58,32 @@ var store = new vuex.Store({
         url: url,
       })
         .then(data => {
-          // commit('deleteSong', data)
           store.dispatch('getMyTunes')
         })
     },
-    promoteTrack({ commit, dispatch }, track) {
+    promoteTrack({ commit, dispatch }, song) {
       //this should increase the position / upvotes and downvotes on the track
+      var url = '//localhost:3000/songs/' + song._id;
+      $.ajax({
+        method: 'PUT',
+        url: url,
+        data: song
+      })
+        .then(data => {
+          store.dispatch('getMyTunes')
+        })
     },
-    demoteTrack({ commit, dispatch }, track) {
+    demoteTrack({ commit, dispatch }, song) {
       //this should decrease the position / upvotes and downvotes on the track
+      var url = '//localhost:3000/songs/' + song._id;
+      $.ajax({
+        method: 'PUT',
+        url: url,
+        data: song
+      })
+        .then(data => {
+          store.dispatch('getMyTunes')
+        })
     }
 
   }

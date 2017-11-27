@@ -21,6 +21,26 @@ router.post('/songs', (req, res, next) => {
     })
 })
 
+router.put('/songs/:_id', (req, res, next)=>{
+    Song.findByIdAndUpdate(req.params._id, req.body)
+        .then(()=>{
+            res.send({message: 'Updated Position'})
+        })
+        .catch(err =>{
+            res.status(400).send({Error: err})
+        })
+})
+
+// router.put('/songs/', (req, res, next)=>{
+//     Song.find({})
+//         .then(song =>{
+//             res.send({res})
+//         })
+//         .catch(err =>{
+//             res.status(400).send({Error: err})
+//         })
+// })
+
 router.delete('/songs/:_id', (req, res, next)=>{
     Song.findByIdAndRemove(req.params._id)
         .then(()=>{
