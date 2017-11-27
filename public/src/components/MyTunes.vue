@@ -1,35 +1,39 @@
 <template>
     <div class="MyTunes">
         <div class="row">
-            <div class="col-sm-4 col-sm-offset-2 title-font">
+            <div class="col-sm-4 col-sm-offset-4 title-font">
                 <h1>MyPlaylist</h1>
             </div>
         </div>
-        <div class="col-sm-12 songs well" v-for="song in songs">
-            <h4>Title: {{song.title}}</h4>
-            <h4>Artist: {{song.artist}}</h4>
-            <div class="col-sm-2 col-sm-offset-10">
-                <button @click="promote(song)" type="button" class="btn btn-default btn-sm add-btn pull-right">
-                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                </button>
-            </div>
-            <div class="col-sm-2 col-sm-offset-10 text-center">
+        <div class="row" v-for="song in songs">
+            <div class="col-sm-8 col-sm-offset-3 my-songs well">
+                <div class="col-sm-6">
+                    <h4>Title: {{song.title}}</h4>
+                    <h4>Artist: {{song.artist}}</h4>
+                </div>
+                <div class="col-sm-2">
+                    <button @click="promote(song)" type="button" class="btn btn-default btn-sm add-btn pull-right">
+                        <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                    </button>
+                </div>
+                <div class="col-sm-2 text-center">
                     <h4>{{song.vote}}</h4>
                 </div>
-            <div class="col-sm-2 col-sm-offset-10">
-                <button @click="demote(song)" type="button" class="btn btn-default btn-sm add-btn pull-right">
-                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                </button>
-            </div>
-            <div class="col-sm-2 col-sm-offset-10">
-                <button @click="remove(song._id)" type="button" class="btn btn-default btn-sm add-btn pull-right">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </button>
-            </div>
-            <div class="col-sm-12">
-                <audio controls>
-                    <source :src="song.preview">
-                </audio>
+                <div class="col-sm-2">
+                    <button @click="demote(song)" type="button" class="btn btn-default btn-sm add-btn pull-right">
+                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                    </button>
+                </div>
+                <div class="col-sm-10">
+                    <audio controls style="width: 50%">
+                        <source :src="song.preview">
+                    </audio>
+                </div>
+                <div class="col-sm-2">
+                    <button @click="remove(song._id)" type="button" class="btn btn-default btn-sm add-btn pull-right">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -72,5 +76,14 @@
 <style>
     .title-font {
         font-family: 'Permanent Marker', cursive;
+    }
+
+    .my-songs {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        outline: solid black 1px;
+        background-color: black;
     }
 </style>

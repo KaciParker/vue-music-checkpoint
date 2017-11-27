@@ -9,15 +9,23 @@
                 </form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-11 col-sm-offset-1 songs well" v-for="song in songs">
-                <button @click="addToPlaylist(song)" class="add-btn pull-right" type="btn">Add to My Playlist</button>
-                <h4>Title: {{song.trackName}}</h4>
-                <h4>Artist: {{song.artistName}}</h4>
-                <img :src="song.artworkUrl100">
-                <audio controls style="margin-left: 3rem">
-                    <source :src="song.previewUrl">
-                </audio>
+        <div class="row" v-for="song in songs">
+            <div class="col-sm-11 col-sm-offset-1 songs well">
+                <div class="col-sm-6">
+                    <h4>Title: {{song.trackName}}</h4>
+                    <h4>Artist: {{song.artistName}}</h4>
+                </div>
+                <div class="col-sm-4 col-sm-offset-2 artwork">
+                    <img :src="song.artworkUrl100">
+                </div>
+                <div class="col-sm-6">
+                    <button @click="addToPlaylist(song)" class="add-btn" type="btn">Add to My Playlist</button>
+                </div>
+                <div class="col-sm-6">
+                    <audio controls style="width: 100%">
+                        <source :src="song.previewUrl">
+                    </audio>
+                </div>
             </div>
         </div>
     </div>
@@ -75,5 +83,9 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         color: black;
+    }
+    .artwork {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
     }
 </style>
